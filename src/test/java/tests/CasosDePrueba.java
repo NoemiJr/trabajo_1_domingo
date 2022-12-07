@@ -9,8 +9,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.*;
-
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -75,7 +76,10 @@ public class CasosDePrueba {
         driver.findElement(By.name("year")).sendKeys("1991");
 
 
-        driver.findElement(By.xpath("//label[@for='gender_option_male']")).click();
+       // driver.findElement(By.xpath("//label[@for='gender_option_male']")).click();
+        WebElement optionMale = driver.findElement(By.xpath("//label[@for='gender_option_male']"));
+        js.executeScript("arguments[0].scrollIntoView();", optionMale);
+        optionMale.click();
 
         driver.findElement(By.xpath("//label[@for='marketing-opt-checkbox']")).click();
 
